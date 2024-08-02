@@ -538,6 +538,8 @@ export default class NestedList {
       console.log(`No node wrapper found`);
       return;
     }
+    console.log(`Everything looks good so far`);
+
     /**
      * Get lists elements
      *
@@ -546,19 +548,25 @@ export default class NestedList {
     const lists: Element[] = Array.from(
       this.nodes.wrapper.querySelectorAll(`.${this.CSS.wrapper}`)
     );
+    console.log(`All lists: ${lists}`);
 
     /**
      * Add main wrapper to the list
      */
     lists.push(this.nodes.wrapper);
+    console.log(`After lists.push: ${lists}`);
 
     /**
      * For each list we need to update classes
      */
     lists.forEach((list) => {
+      console.log(`Inside Lists For Each: ${list}`);
       list.classList.toggle(this.CSS.wrapperUnordered, style === 'unordered');
       list.classList.toggle(this.CSS.wrapperOrdered, style === 'ordered');
+      console.log(`Done with for each for: ${list}`);
     });
+
+    console.log(`Trying to update this.data.style: ${this.data.style}`);
 
     /**
      * Update the style in data
