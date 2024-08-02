@@ -277,6 +277,9 @@ export default class NestedList {
       isActive: this.data.style === tune.name,
       closeOnActivate: true,
       onActivate: () => {
+        console.log(`tune.name: ${tune.name}`);
+        console.log(`this.listStyle: ${this.listStyle}`);
+        console.log(`this.data.style: ${this.data.style}`);
         this.listStyle = tune.name;
       },
     }));
@@ -437,6 +440,8 @@ export default class NestedList {
       });
     };
 
+    console.log(`Saving style as ${this.data.style}`);
+
     return {
       style: this.data.style,
       items: this.nodes.wrapper ? getItems(this.nodes.wrapper) : [],
@@ -524,10 +529,13 @@ export default class NestedList {
    * @param {ListDataStyle} style - new style to set
    */
   set listStyle(style: ListDataStyle) {
+    console.log(`Trying to change style to ${style}`);
     if (!this.nodes) {
+      console.log(`No nodes found`);
       return;
     }
     if (!this.nodes.wrapper) {
+      console.log(`No node wrapper found`);
       return;
     }
     /**
@@ -558,6 +566,7 @@ export default class NestedList {
      * @type {ListDataStyle}
      */
     this.data.style = style;
+    console.log(`Updated this.data.style: ${this.data.style}`);
   }
 
   /**
